@@ -24,6 +24,8 @@ jobs:
     - name: add issues to project board
       uses: peter-evans/create-or-update-project-card@v2
       with:
+          project-name: ${{ github.event.issue }}
+          issue-number: ${{ github.event.issue.number }}
           project-url: 'https://github.com/NarmalaSk/teleicu_middleware/projects/1'
           issue-url: ${{ github.event.issue.html_url }}
   test:
