@@ -1,6 +1,17 @@
 name: Docker Image CI
 
 on:
+  issues:
+    types: [opened]
+    jobs:
+    add_to_project:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add issue to project board
+        uses: peter-evans/create-or-update-project-card@v2
+        with:
+          project-url: 'https://github.com/NarmalaSk/teleicu_middleware/projects?query=is%3Aopen'
+          issue-url: ${{ github.event.issue.html_url }}
   push:
     paths-ignore:
       - '.github/**'
