@@ -18,14 +18,16 @@ env:
   IMAGE_NAME: teleicu_middleware
 
 jobs:
-  add_to_project:
+  add-to-project:
+    name: Add issue to project
     runs-on: ubuntu-latest
     steps:
-    - name: add issues to project board
-      uses: peter-evans/create-or-update-project-card@v2
-      with:
-          project-name: ${{ github.event.issue }}
-          issue-number: ${{ github.event.issue.number }}
+      - uses: actions/add-to-project@v3
+        with:
+          project-url: https://github.com/ohcnetwork/teleicu_middleware/projects?query=is%3Aopen
+          github-token: ${{ secrets.ADD_TO_PROJECT_PAT }}
+          labeled: ""
+          label-operator: NOT
   test:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
