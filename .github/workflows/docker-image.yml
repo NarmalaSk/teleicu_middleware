@@ -26,8 +26,6 @@ jobs:
       with:
           project-name: ${{ github.event.issue }}
           issue-number: ${{ github.event.issue.number }}
-          project-url: 'https://github.com/NarmalaSk/teleicu_middleware/projects/1'
-          issue-url: ${{ github.event.issue.html_url }}
   test:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
